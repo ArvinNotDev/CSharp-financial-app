@@ -25,11 +25,16 @@ namespace financial.Services
             File.WriteAllText(FilePath, json);
         }
 
-        public static void AddAccount(string firstName, string lastName, string email, int birthDate, bool? gender, string password)
+        public static bool AddAccount(string firstName, string lastName, string email, int birthDate, bool? gender, string password)
         {
+            if (accounts.Any(acc => string.Equals(acc.email, email, StringComparison.OrdinalIgnoreCase)))
+            {
+                return false;
+            }
             var acc = new Account(firstName, lastName, email, birthDate, gender, password);
             accounts.Add(acc);
             SaveAccounts();
+            return true;
         }
 
         public static Account? GetAccountById(string id)
@@ -65,5 +70,10 @@ namespace financial.Services
                 Console.WriteLine($"{acc.firstName} {acc.lastName} - {acc.email}");
             }
         }
+        public static bool EmailExists(string email)
+        {
+            return accounts.Exists(acc => acc.email.Equals(email, StringComparison.OrdinalIgnoreCase));
+        }
+
     }
 }
