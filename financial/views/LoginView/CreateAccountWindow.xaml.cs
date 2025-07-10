@@ -26,8 +26,13 @@ namespace financial
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // implemention in the future :)
             FirstNameBox.Text = "";
-            LastNameBox.Text = ""
+            LastNameBox.Text = "";
+            EmailBox.Text = "";
+            BirthDatePicker.Text = "";
+            GenderBox.Text = "";
+            PasswordBox.Password = "";
         }
     }
 }
