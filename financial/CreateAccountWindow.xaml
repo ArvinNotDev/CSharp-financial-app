@@ -10,19 +10,19 @@
                        HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
             <TextBlock Text="First Name" FontWeight="SemiBold" Margin="0,0,0,4"/>
-            <TextBox Height="30" FontSize="14" Padding="6" />
+            <TextBox Height="30" FontSize="14" Padding="6" x:Name="FirstNameBox"/>
 
             <TextBlock Text="Last Name" FontWeight="SemiBold" Margin="0,0,0,4"/>
-            <TextBox Height="30" FontSize="14" Padding="6" />
+            <TextBox Height="30" FontSize="14" Padding="6" x:Name="LastNameBox"/>
 
             <TextBlock Text="Email" FontWeight="SemiBold" Margin="0,0,0,4"/>
-            <TextBox Height="30" FontSize="14" Padding="6" />
+            <TextBox Height="30" FontSize="14" Padding="6" x:Name="EmailBox"/>
 
             <TextBlock Text="Birth Date" FontWeight="SemiBold" Margin="0,0,0,4"/>
-            <DatePicker Height="30" FontSize="14"/>
+            <DatePicker Height="30" FontSize="14" x:Name="BirthDatePicker"/>
 
             <TextBlock Text="Gender" FontWeight="SemiBold" Margin="0,0,0,4"/>
-            <ComboBox Height="30" FontSize="14" >
+            <ComboBox Height="30" FontSize="14" x:Name="GenderBox">
                 <ComboBoxItem Content="Unspecified" IsSelected="True"/>
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>
@@ -30,9 +30,9 @@
             </ComboBox>
 
             <TextBlock Text="Password" FontWeight="SemiBold" Margin="0,0,0,4"/>
-            <PasswordBox Height="30" FontSize="14" Padding="6" />
+            <PasswordBox Height="30" FontSize="14" Padding="6" x:Name="PasswordBox"/>
 
-            <Button Content="Create Account" Height="40" Margin="0,30,0,0" Background="#0078D7" Foreground="White" FontWeight="SemiBold" Cursor="Hand"/>
+            <Button Content="Create Account" Height="40" Margin="0,30,0,0" Background="#0078D7" Foreground="White" FontWeight="SemiBold" Cursor="Hand" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>
