@@ -5,7 +5,7 @@ namespace financial.Validators.FieldValidators
 {
     internal static class AccountValidator
     {
-        public static ValidationResult Validate(string firstName, string lastName, string email, DateTime? birthDate, bool? gender, string password)
+        public static ValidationResult Validate(string firstName, string lastName, string email, DateTime? birthDate, string password)
         {
             if (string.IsNullOrWhiteSpace(firstName))
                 return ValidationResult.Fail(ValidationMessages.FirstNameRequired);
