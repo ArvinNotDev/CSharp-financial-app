@@ -1,6 +1,9 @@
 ﻿using financial.Models;
 using System.Text.Json;
+using financial.Validators;
 using File = System.IO.File;
+using financial.Validators.FieldValidators;
+using financial.Validators.DbValidators;
 
 namespace financial.Services
 {
@@ -25,16 +28,16 @@ namespace financial.Services
             File.WriteAllText(FilePath, json);
         }
 
-        public static bool AddAccount(string firstName, string lastName, string email, int birthDate, bool? gender, string password)
+        public static (bool, string) AddAccount(string firstName, string lastName, string email, int birthDate, bool? gender, string password)
         {
-            if (accounts.Any(acc => string.Equals(acc.email, email, StringComparison.OrdinalIgnoreCase)))
+            if (EmailExists(email))
             {
-                return false;
+                return (false, ValidationMessages.EmailNotUnique);
             }
             var acc = new Account(firstName, lastName, email, birthDate, gender, password);
             accounts.Add(acc);
             SaveAccounts();
-            return true;
+            return (true, "Successfully logged in");
         }
 
         public static Account? GetAccountById(string id)
