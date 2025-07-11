@@ -40,6 +40,15 @@
                     FontWeight="SemiBold"
                     Cursor="Hand"
                     Click="CreateAccount_Click"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,15,0,0" FontSize="14">
+    <Run Text="have an account? "/>
+    <Hyperlink Click="Login_Click"
+               Cursor="Hand"
+               Foreground="#0078D7"
+               TextDecorations="Underline">
+        Login
+    </Hyperlink>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

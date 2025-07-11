@@ -14,5 +14,12 @@ namespace financial.Views.LoginView
         {
             MessageBox.Show("Account creation logic goes here!");
         }
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow is MainWindow main)
+            {
+                main.LoadLogin();
+            }
+        }
     }
 }
