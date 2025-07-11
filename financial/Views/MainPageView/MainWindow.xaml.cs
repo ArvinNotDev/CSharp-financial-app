@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using financial.Views.LoginView;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,22 @@ namespace financial
         public MainWindow()
         {
             InitializeComponent();
+            LoadLogin();
+        }
+
+        public void LoadLogin()
+        {
+            MainContent.Content = new LoginControl();
+        }
+
+        public void LoadCreateAccount()
+        {
+            MainContent.Content = new CreateAccountControl();
+        }
+
+        public void LoadMainMenu()
+        {
+            
         }
     }
 }
