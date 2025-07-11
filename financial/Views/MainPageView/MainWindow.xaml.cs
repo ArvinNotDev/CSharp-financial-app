@@ -31,31 +31,47 @@ namespace financial
         {
             
         }
-        public void AnimateContent(UserControl newContent)
+        public void AnimateContent(UserControl newContent, bool slideFromRight = true)
         {
             newContent.Opacity = 0;
-            TranslateTransform trans = new TranslateTransform();
+
+            double fromX = slideFromRight ? 80 : -80;
+
+            var trans = new TranslateTransform(fromX, 0);
             newContent.RenderTransform = trans;
 
             var storyboard = new Storyboard();
 
-            var slideAnim = new DoubleAnimation(50, 0, TimeSpan.FromMilliseconds(300))
+            var slideAnim = new DoubleAnimation
             {
-                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                From = fromX,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(400),
+                EasingFunction = new BackEase
+                {
+                    Amplitude = 0.4,
+                    EasingMode = EasingMode.EaseOut
+                }
             };
             Storyboard.SetTarget(slideAnim, newContent);
             Storyboard.SetTargetProperty(slideAnim, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.X)"));
 
-            var fadeAnim = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(300));
-            Storyboard.SetTarget(fadeAnim, newContent);
-            Storyboard.SetTargetProperty(fadeAnim, new PropertyPath("Opacity"));
-
-            storyboard.Children.Add(slideAnim);
-            storyboard.Children.Add(fadeAnim);
+            var fadeIn = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromMilliseconds(400),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+            Storyboard.SetTarget(fadeIn, newContent);
+            Storyboard.SetTargetProperty(fadeIn, new PropertyPath("Opacity"));
 
             MainContent.Content = newContent;
+            storyboard.Children.Add(slideAnim);
+            storyboard.Children.Add(fadeIn);
             storyboard.Begin(newContent);
         }
+
 
     }
 

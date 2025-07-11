@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:financial"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="900">
-    <Grid x:Name="RootGrid">
+    <Grid x:Name="RootGrid" ClipToBounds="True">
         <ContentControl x:Name="MainContent"/>
     </Grid>
 </Window>
