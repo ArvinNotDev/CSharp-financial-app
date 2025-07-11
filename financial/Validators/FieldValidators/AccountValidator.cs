@@ -5,7 +5,7 @@ namespace financial.Validators.FieldValidators
 {
     internal static class AccountValidator
     {
-        public static ValidationResult Validate(string firstName, string lastName, string email, DateTime? birthDate, string password)
+        public static ValidationResult ValidateCreateAccount(string firstName, string lastName, string email, DateTime? birthDate, string password)
         {
             if (string.IsNullOrWhiteSpace(firstName))
                 return ValidationResult.Fail(ValidationMessages.FirstNameRequired);
@@ -31,5 +31,17 @@ namespace financial.Validators.FieldValidators
 
             return ValidationResult.Success();
         }
+        public static ValidationResult ValidateLogin(string email, string password)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase))
+                return ValidationResult.Fail(ValidationMessages.EmailInvalid);
+
+            if (string.IsNullOrWhiteSpace(password) || password.Length < 6)
+                    return ValidationResult.Fail(ValidationMessages.PasswordTooShort);
+
+            return ValidationResult.Success();
+        }
+
     }
 }
