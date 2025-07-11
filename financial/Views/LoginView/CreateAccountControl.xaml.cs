@@ -14,7 +14,7 @@ namespace financial.Views.LoginView
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
             DateTime? birthDate = BirthDatePicker.SelectedDate;
-            var result = AccountValidator.Validate(FirstNameBox.Text, LastNameBox.Text, EmailBox.Text, birthDate, PasswordBox.Password);
+            var result = AccountValidator.ValidateCreateAccount(FirstNameBox.Text, LastNameBox.Text, EmailBox.Text, birthDate, PasswordBox.Password);
             if (result.isValid)
             {
                 //create account
