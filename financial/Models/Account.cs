@@ -9,12 +9,12 @@ internal class Account
     public string firstName { get; set; }
     public string lastName { get; set; }
     public string email { get; set; }
-    public int birthDate { get; set; }
+    public DateTime birthDate { get; set; }
     public bool? gender { get; set; } = null;
     public string password { get; set; }
 
 
-    public Account(string firstName, string lastName, string email, int birthDate, bool? gender, string password)
+    public Account(string firstName, string lastName, string email, DateTime birthDate, bool? gender, string password)
     {
         this.firstName = firstName;
         this.lastName = lastName;
