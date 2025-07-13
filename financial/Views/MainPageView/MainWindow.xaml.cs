@@ -11,10 +11,18 @@ namespace financial
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string LoginId = "";
         public MainWindow()
         {
             InitializeComponent();
-            LoadLogin();
+            if (LoginId == "")
+            {
+                LoadLogin();
+            }
+            else
+            {
+                LoadMainMenu();
+            }
         }
 
         public void LoadLogin()
