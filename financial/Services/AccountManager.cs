@@ -73,13 +73,16 @@ namespace financial.Services
             return false;
         }
 
-        public static bool CheckLogin(string email, string inputPassword)
+        public static (bool, string) CheckLogin(string email, string inputPassword)
         {
             var user = accounts.Find(acc => acc.email == email);
             if (user == null)
-                return false;
-
-            return BCrypt.Net.BCrypt.Verify(inputPassword, user.password);
+                return (false, "");
+            if (BCrypt.Net.BCrypt.Verify(inputPassword, user.password))
+            {
+                return (true, user.id);
+            }
+            return (false, "");
         }
 
         public static void PrintAccounts()
