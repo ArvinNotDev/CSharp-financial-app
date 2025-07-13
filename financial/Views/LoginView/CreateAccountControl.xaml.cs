@@ -50,6 +50,10 @@ namespace financial.Views.LoginView
             if (status)
             {
                 MessageBox.Show("Account created successfully!");
+                FirstNameBox.Text = "";
+                LastNameBox.Text = "";
+                EmailBox.Text = "";
+                PasswordBox.Password = "";
             }
             else
             {
