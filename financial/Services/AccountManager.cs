@@ -10,11 +10,11 @@ namespace financial.Services
 {
     internal class AccountManager
     {
-        private static List<Account> accounts = new();
-
         private const string FilePath = "accounts.json";
 
-        public static void LoadAccounts()
+        private static List<Account> accounts = LoadAccounts();
+
+        public static List<Account> LoadAccounts()
         {
             if (File.Exists(FilePath))
             {
@@ -26,10 +26,12 @@ namespace financial.Services
                 options.Converters.Add(new DateOnlyJsonConverter());
 
                 accounts = JsonSerializer.Deserialize<List<Account>>(json, options) ?? new List<Account>();
+                return accounts;
             }
+            return new List<Account>();
         }
 
-        public static void SaveAccounts()
+        public static bool SaveAccounts()
         {
             var options = new JsonSerializerOptions
             {
@@ -39,6 +41,7 @@ namespace financial.Services
 
             string json = JsonSerializer.Serialize(accounts, options);
             File.WriteAllText(FilePath, json);
+            return true;
         }
 
         public static (bool, string) AddAccount(string firstName, string lastName, string email, DateTime birthDate, bool gender, string password)
@@ -50,8 +53,7 @@ namespace financial.Services
 
             var acc = new Account(firstName, lastName, email, birthDate, gender, password);
             accounts.Add(acc);
-            SaveAccounts();
-            return (true, "Account successfully created");
+            return (SaveAccounts(), "Account successfully created");
         }
 
         public static Account? GetAccountById(string id)

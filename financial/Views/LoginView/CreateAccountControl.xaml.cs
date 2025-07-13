@@ -38,7 +38,7 @@ namespace financial.Views.LoginView
 
             bool gender = GenderBox.Text == "Male";
 
-            var (success, message) = AccountManager.AddAccount(
+            var (status, message) = AccountManager.AddAccount(
                 FirstNameBox.Text,
                 LastNameBox.Text,
                 EmailBox.Text,
@@ -47,7 +47,7 @@ namespace financial.Views.LoginView
                 PasswordBox.Password
             );
 
-            if (success)
+            if (status)
             {
                 MessageBox.Show("Account created successfully!");
             }
