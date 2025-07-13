@@ -73,7 +73,7 @@ namespace financial.Services
             return false;
         }
 
-        public static bool CheckPassword(string email, string inputPassword)
+        public static bool CheckLogin(string email, string inputPassword)
         {
             var user = accounts.Find(acc => acc.email == email);
             if (user == null)
