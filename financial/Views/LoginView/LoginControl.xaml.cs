@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using financial.Services;
 using financial.Validators.FieldValidators;
 
 namespace financial.Views.LoginView
 {
     public partial class LoginControl : UserControl
     {
+        string userId = "";
         public LoginControl()
         {
             InitializeComponent();
@@ -17,8 +19,18 @@ namespace financial.Views.LoginView
 
             if (result.isValid)
             {
-                //logged in
-                MessageBox.Show("logged in");
+                (bool, string) loginAndId = AccountManager.CheckLogin(EmailBox.Text, PasswordBox.Password);
+
+                if (loginAndId.Item1)
+                {
+                    userId = loginAndId.Item2 as string;
+                    MessageBox.Show("logged in successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Wrong email/password!");
+                    PasswordBox.Password = "";
+                }
             }
             else
             {
