@@ -1,4 +1,5 @@
 ﻿using financial.Views.LoginView;
+using financial.Views.MainPageView;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -37,7 +38,7 @@ namespace financial
 
         public void LoadMainMenu()
         {
-            
+            AnimateContent(new MainMenuControl());
         }
         public void AnimateContent(UserControl newContent, bool slideFromRight = true)
         {

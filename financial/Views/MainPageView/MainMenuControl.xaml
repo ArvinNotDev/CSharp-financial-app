@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="financial.Views.MainPageView.MainMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Height="Auto" Width="Auto">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+        <TextBlock Text="Main Menu" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <Button x:Name="BtnProducts" Content="Products" Height="40" Margin="0,0,0,10"/>
+        <Button x:Name="BtnAccounts" Content="Accounts" Height="40" Margin="0,0,0,10"/>
+        <Button x:Name="BtnReports" Content="Reports" Height="40" Margin="0,0,0,10"/>
+        <Button x:Name="BtnSettings" Content="Settings" Height="40" Margin="0,0,0,10"/>
+        <Button x:Name="BtnLogout" Content="Logout" Height="40" Background="Tomato" Foreground="White" />
+    </StackPanel>
+</UserControl>

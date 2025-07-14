@@ -25,6 +25,10 @@ namespace financial.Views.LoginView
                 {
                     userId = loginAndId.Item2 as string;
                     MessageBox.Show("logged in successfully");
+                    if (Application.Current.MainWindow is MainWindow main)
+                    {
+                        main.LoadMainMenu();
+                    }
                 }
                 else
                 {
