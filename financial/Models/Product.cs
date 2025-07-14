@@ -12,7 +12,7 @@ namespace financial.Models
     internal class Product
     {
         public string id { get; set; } = Guid.NewGuid().ToString();
-        public Account account { get; set; }
+        public string accountId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public decimal price { get; set; }
@@ -20,9 +20,9 @@ namespace financial.Models
         public DateTime CreatedDate { get; } = DateTime.UtcNow;
         public DateTime? LastModifiedDate { get; set; }
 
-        public Product(Account account, string name, string description, decimal price, TransactionType transactionType)
+        public Product(string accountId, string name, string description, decimal price, TransactionType transactionType)
         {
-            this.account = account;
+            this.accountId = accountId;
             this.name = name;
             this.description = description;
             this.price = price;
