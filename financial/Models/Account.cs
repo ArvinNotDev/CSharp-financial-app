@@ -13,6 +13,7 @@ internal class Account
     public bool? gender { get; set; } = null;
     public string password { get; set; }
 
+    public Account() { }
 
     public Account(string firstName, string lastName, string email, DateTime birthDate, bool? gender, string password)
     {

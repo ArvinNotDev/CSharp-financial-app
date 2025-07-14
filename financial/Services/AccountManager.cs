@@ -78,19 +78,11 @@ namespace financial.Services
             var user = accounts.Find(acc => acc.email == email);
             if (user == null)
                 return (false, "");
-            if (BCrypt.Net.BCrypt.Verify(inputPassword, user.password))
+            if (BCrypt.Net.BCrypt.Verify(inputPassword, user.password)) 
             {
                 return (true, user.id);
             }
             return (false, "");
-        }
-
-        public static void PrintAccounts()
-        {
-            foreach (var acc in accounts)
-            {
-                Console.WriteLine($"{acc.firstName} {acc.lastName} - {acc.email}");
-            }
         }
 
         public static bool EmailExists(string email)
